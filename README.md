@@ -36,7 +36,7 @@
 
 ## **_Credits_**
 
-#### Undoubtehly, I will be looking for advice/examples on how to approach this project, and so I will need to provide the proper credits, here.
+#### Undoubtedly, I will be looking for advice/examples on how to approach this project, and so I will need to provide the proper credits, here.
 
 - #### Patrick Knight (myself, as an example)
 - #### General Assembly (projech assigner, as example)
