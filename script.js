@@ -51,9 +51,7 @@ const lookNearby = (gameGrid) => {
       } else if (i>0 && i<iMax) {
         for (let rowIn=i-1; rowIn<=i+1; rowIn++) {
           for (let colIn=j-1; colIn<=j+1; colIn++) {
-            if (colIn < 0) {
-              //Skip
-            } else if (colIn > jMax) {
+            if (colIn < 0 || colIn > jMax) {
               //Skip
             } else {
               if(gameGrid[rowIn][colIn] === 'bomb') {
@@ -67,9 +65,7 @@ const lookNearby = (gameGrid) => {
       } else if (i == 0) {
         for (let rowIn=i; rowIn<=i+1; rowIn++) {
           for (let colIn=j-1; colIn<=j+1; colIn++) {
-            if (colIn < 0) {
-              //Skip
-            } else if (colIn > jMax) {
+            if (colIn < 0 || colIn > jMax) {
               //Skip
             } else {
               if(gameGrid[rowIn][colIn] === 'bomb') {
@@ -83,9 +79,7 @@ const lookNearby = (gameGrid) => {
       } else if (i == iMax) {
         for (let rowIn=i-1; rowIn<=i; rowIn++) {
           for (let colIn=j-1; colIn<=j+1; colIn++) {
-            if (colIn < 0) {
-              //Skip
-            } else if (colIn > jMax) {
+            if (colIn < 0 || colIn > jMax) {
               //Skip
             } else {
               if(gameGrid[rowIn][colIn] === 'bomb') {
@@ -102,11 +96,43 @@ const lookNearby = (gameGrid) => {
   return gameGrid;
 }
 
+// Create divs -- test working live, will need to put into a function:
+const divMatrix = (gameGrid) => {
+  let rowMax = gameGrid.length;
+  let colMax = gameGrid[0].length;
+  for (let k=0; k<rowMax; k++) {
+    let newDivRow = document.createElement('div');
+    newDivRow.id = `row${k}`
+    newDivRow.classList.add('gameRows')
+    for (let x=0; x<colMax; x++) {
+      let newSpanCell = document.createElement('span');
+      newSpanCell.id = `cell${k}-${x}`;
+      newSpanCell.classList.add('gameCell')
+      newSpanCell.innerHTML = gameGrid[k][x];
+      newDivRow.appendChild(newSpanCell);
+    }
+    console.log(newDivRow);
+    document.querySelector('#gridBody').appendChild(newDivRow);
+  }
+}
+
+
 let gameGrid = makeGrid(8, 8);
 console.log(gameGrid);
 console.log(gameGrid[2].length);
-let gameGridMined = lookNearby(populateGrid(gameGrid, 8));
+let gameGridMined = lookNearby(populateGrid(gameGrid, 6));
 console.log(gameGridMined);
+divMatrix(gameGridMined);
+// To test.
+// {
+//   for (let g=0; g<1; g++) {
+//     for (let h=0; h<8; h++) {
+//       //
+//       document.getElementById(`cell${g}-${h}`).innerHTML = "bomb"
+//     }
+//   }
+// }
+// The above needs to go into a function.
 
 //////////////////////
 // Event Listeners  //
@@ -117,3 +143,6 @@ console.log(gameGridMined);
 //////////////////////
 // Other Notes      //
 //////////////////////
+
+// idea 1: create div's that contain spans, each corresponding to a coordinate in the gameGrid matrix. Each will have a label displaying 'bomb', number nearby, or be blank. These will be covered by a button that can either display a flag (with click turned off), or dissapear on click (checking for game over/iniate recursion).
+// idea 2: create cell objects that hold the data for each cell. These 'cells' then get mapped onto divs that get arranged onto a grid.

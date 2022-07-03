@@ -1,4 +1,24 @@
 #gridBody {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   /* will need to change the template dynamically, with js? */
+  /* Can also do flex of flex (div rows hold array of spans. */
+}
+
+.gameRows {
+  display: flex;
+  flex-direction: row;
+  /*For testing*/
+  
+}
+
+.gameCell {
+  /*For testing*/
+  background-color: aqua;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  border: dotted 1px black;
+  text-align: center;
+
 }
