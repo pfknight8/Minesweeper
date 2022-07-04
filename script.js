@@ -5,6 +5,8 @@
 //////////////////////
 
 //start
+let gameOver = false;
+let hitABomb = false;
 
 //////////////////////
 // Functions        //
@@ -122,25 +124,58 @@ const divMatrix = (gameGridReady) => {
   }
 }
 
+//Make buttons and place them into the grid with event listeners.
 const makeBtn = (index1, index2, gameGridReady) => {
   let newBtn = document.createElement('button');
+  let maxRowIndex = gameGridReady.length-1;
+  let maxColIndex = gameGridReady[0].length-1;
   newBtn.id = `gridBtn${index1}-${index2}`;
-  newBtn.classList.add('gameBtn')
-  newBtn.addEventListener(('dblclick'), () => {
+  newBtn.classList.add('gameBtn');
+  newBtn.addEventListener(('click'), () => {
     //See if the there is a bomb at the grid coordinate, else if 0 start click events on neighbors, else reveal tile and stop.
     if (gameGridReady[index1][index2] === 'bomb') {
-      console.log('Game Over!');
+      alert('Oh no, you died! Game Over!');
+      //Need to end the game
+      let buttonsOff = document.getElementsByClassName('gameBtn');
+      console.log(buttonsOff);
+      Array.from(buttonsOff).forEach(element => {
+        element.style.pointerEvents = 'none';
+      });
+    } else if(gameGridReady[index1][index2] == 0) {
+      //Start 'click' on all nearby squares.
+      for (let a=index1-1; a<=index1+1; a++) {
+        if (a < 0 || a > maxRowIndex) {
+          //Skip
+        } else {
+          for (let b=index2-1; b<=index2+1; b++) {
+            if (b < 0 || b > maxColIndex) {
+              //Skip
+            } else {
+              if (a === index1 && b === index2) {
+                //Skip
+              } else {
+                //Emulate the click. Could also set element style to change txt color (goal to hide 0).
+                let nextBtn = document.getElementById(`gridBtn${a}-${b}`);
+                if (newBtn.style.visibility !== 'hidden') {
+                  nextBtn.click();
+                }
+              }
+            }
+          }
+        }
+      }
     }
     newBtn.style.visibility = 'hidden';
-    document.getElementById(`value${index1}-${index2}`).style.display = 'block'
+    document.getElementById(`value${index1}-${index2}`).style.display = 'block';
   });
+  // newBtn.addEventListener(('auxclick'), () => {});
   return newBtn;
 }
 
 //This will be set to a start game button. Use to test for now.
 let gameGrid = makeGrid(8, 8);
-console.log(gameGrid);
-console.log(gameGrid[2].length);
+// console.log(gameGrid);
+// console.log(gameGrid[2].length);
 let gameGridMined = lookNearby(populateGrid(gameGrid, 6));
 console.log(gameGridMined);
 divMatrix(gameGridMined);
@@ -155,6 +190,8 @@ divMatrix(gameGridMined);
 // }
 // The above needs to go into a function.
 
+
+
 //////////////////////
 // Event Listeners  //
 //////////////////////
@@ -165,5 +202,6 @@ divMatrix(gameGridMined);
 // Other Notes      //
 //////////////////////
 
-// idea 1: create div's that contain spans, each corresponding to a coordinate in the gameGrid matrix. Each will have a label displaying 'bomb', number nearby, or be blank. These will be covered by a button that can either display a flag (with click turned off), or dissapear on click (checking for game over/iniate recursion).
-// idea 2: create cell objects that hold the data for each cell. These 'cells' then get mapped onto divs that get arranged onto a grid.
+// Create function to flag squares with 'alternate click'; can add/remove a 'flagged' class to the button, preferably adding a graphic to the inside.
+
+// Need to check winning conditions: set global variable for 'game over' and 'hitbomb' where both being true means a loss, 'game over' true and 'hitbomb' false means win. 'game over' will have to check that all squares are either 'hidden' or 'flagged'...may need to check that only bombs are flagged: check that all 'bomb' are flagged and that all non-'bomb' tiles are 'hidden' and not 'flag'.
