@@ -39,7 +39,7 @@ const populateGrid = (gameGrid, numBombs) => {
   return gameGrid;
 }
 
-//Evaluate the array to place numbers.
+//Evaluate the array to place number of nearby 'bombs' in the game grid.
 const lookNearby = (gameGridMined) => {
   let iMin = 0;
   let jMin = 0;
@@ -124,6 +124,39 @@ const divMatrix = (gameGridReady) => {
   }
 }
 
+const gameStatus = (gameGridReady) => {
+  //Checks to see if the game has been won
+  // let evalBtns = document.getElementsByClassName('gameBtn');
+  let incorrectMark = 0;
+  let correctMark = 0;
+  let unclickedTiles = 0;
+  //Count Bombs
+  let bombsTotal = 0;
+  for (let i=0; i<gameGridReady.length; i++) {
+    for (let j=0; j<gameGridReady[0].length; j++) {
+      if (gameGrid[i][j] === 'bomb') {
+        bombsTotal += 1;
+      }
+    }
+  }
+  for (let i=0; i<gameGridReady.length; i++) {
+    for (let j=0; j<gameGridReady[0].length; j++) {
+      let evalBtn = document.getElementById(`gridBtn${i}-${j}`);
+      if (evalBtn.classList.contains('flagged') && gameGridReady[i][j] !== 'bomb') {
+        incorrectMark += 1;
+      } else if (evalBtn.classList.contains('flagged') && gameGridReady[i][j] === 'bomb') {
+        correctMark += 1;
+      } else if (gameGridReady[i][j] !== 'bomb' && evalBtn.style.visibility !== 'hidden') {
+        unclickedTiles += 1;
+      }
+    }
+  }
+  if (correctMark === bombsTotal && incorrectMark === 0 && unclickedTiles ===0) {
+    alert("Win!");
+    gameOver = true;
+  }
+}
+
 //Make buttons and place them into the grid with event listeners.
 const makeBtn = (index1, index2, gameGridReady) => {
   let newBtn = document.createElement('button');
@@ -131,43 +164,57 @@ const makeBtn = (index1, index2, gameGridReady) => {
   let maxColIndex = gameGridReady[0].length-1;
   newBtn.id = `gridBtn${index1}-${index2}`;
   newBtn.classList.add('gameBtn');
-  newBtn.addEventListener(('click'), () => {
+  newBtn.addEventListener(('click'), (e) => {
     //See if the there is a bomb at the grid coordinate, else if 0 start click events on neighbors, else reveal tile and stop.
-    if (gameGridReady[index1][index2] === 'bomb') {
-      alert('Oh no, you died! Game Over!');
-      //Need to end the game
-      let buttonsOff = document.getElementsByClassName('gameBtn');
-      console.log(buttonsOff);
-      Array.from(buttonsOff).forEach(element => {
-        element.style.pointerEvents = 'none';
-      });
-    } else if(gameGridReady[index1][index2] == 0) {
-      //Start 'click' on all nearby squares.
-      for (let a=index1-1; a<=index1+1; a++) {
-        if (a < 0 || a > maxRowIndex) {
-          //Skip
-        } else {
-          for (let b=index2-1; b<=index2+1; b++) {
-            if (b < 0 || b > maxColIndex) {
-              //Skip
-            } else {
-              if (a === index1 && b === index2) {
+    if (e.shiftKey === true) {
+      console.log('Shifted!');
+      if (newBtn.classList.contains('flagged')) {
+        newBtn.classList.remove('flagged');
+      } else {
+        newBtn.classList.add('flagged');
+      }
+    } else {
+      if (newBtn.classList.contains('flagged')) {
+        //Do Nothing!
+        return;
+      } else if (gameGridReady[index1][index2] === 'bomb') {
+        alert('Oh no, you died! Game Over!');
+        //Need to end the game
+        document.getElementById(`cell${index1}-${index2}`).style.backgroundColor = 'orange';
+        let buttonsOff = document.getElementsByClassName('gameBtn');
+        Array.from(buttonsOff).forEach(element => {
+          element.style.pointerEvents = 'none';
+        });
+        hitABomb = true;
+        gameOver = true;
+      } else if(gameGridReady[index1][index2] == 0) {
+        //Start 'click' on all nearby tiles.
+        for (let a=index1-1; a<=index1+1; a++) {
+          if (a < 0 || a > maxRowIndex) {
+            //Skip
+          } else {
+            for (let b=index2-1; b<=index2+1; b++) {
+              if (b < 0 || b > maxColIndex) {
                 //Skip
               } else {
-                //Emulate the click. Could also set element style to change txt color (goal to hide 0).
-                let nextBtn = document.getElementById(`gridBtn${a}-${b}`);
-                if (newBtn.style.visibility !== 'hidden') {
-                  nextBtn.click();
+                if (a === index1 && b === index2) {
+                  //Skip
+                } else {
+                  //Emulate the click. Could also set element style to change txt color (goal to hide 0).
+                  let nextBtn = document.getElementById(`gridBtn${a}-${b}`);
+                  if (newBtn.style.visibility !== 'hidden') {
+                    nextBtn.click();
+                  }
                 }
               }
             }
           }
         }
       }
-    }
-    newBtn.style.visibility = 'hidden';
-    document.getElementById(`value${index1}-${index2}`).style.display = 'block';
-  });
+      newBtn.style.visibility = 'hidden';
+      document.getElementById(`value${index1}-${index2}`).style.display = 'block';
+      gameStatus(gameGridReady);
+    }});
   // newBtn.addEventListener(('auxclick'), () => {});
   return newBtn;
 }
@@ -202,6 +249,6 @@ divMatrix(gameGridMined);
 // Other Notes      //
 //////////////////////
 
-// Create function to flag squares with 'alternate click'; can add/remove a 'flagged' class to the button, preferably adding a graphic to the inside.
+// Create function to flag tiles with 'alternate click'; can add/remove a 'flagged' class to the button, preferably adding a graphic to the inside.
 
-// Need to check winning conditions: set global variable for 'game over' and 'hitbomb' where both being true means a loss, 'game over' true and 'hitbomb' false means win. 'game over' will have to check that all squares are either 'hidden' or 'flagged'...may need to check that only bombs are flagged: check that all 'bomb' are flagged and that all non-'bomb' tiles are 'hidden' and not 'flag'.
+// Need to check winning conditions: set global variable for 'game over' and 'hitbomb' where both being true means a loss, 'game over' true and 'hitbomb' false means win. 'game over' will have to check that all tiles are either 'hidden' or 'flagged'...may need to check that only bombs are flagged: check that all 'bomb' are flagged and that all non-'bomb' tiles are 'hidden' and not 'flag'.

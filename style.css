@@ -34,3 +34,7 @@
   display: none;
   /* visibility: hidden; */
 }
+
+.flagged {
+  background-color: red;
+}
