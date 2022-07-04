@@ -40,3 +40,4 @@
 
 - #### Patrick Knight (myself, as an example)
 - #### General Assembly (projech assigner, as example)
+- #### for insight on useful techniques mdn : https://developer.mozilla.org/en-US/

@@ -22,3 +22,14 @@
   text-align: center;
 
 }
+
+.gameBtn {
+  /* display: contents; */
+  width: 40px;
+  height: 40px;
+}
+
+.cellValue {
+  display: none;
+  /* visibility: hidden; */
+}
