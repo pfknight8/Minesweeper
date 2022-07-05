@@ -5,8 +5,14 @@
 //////////////////////
 
 //start
-let gameOver = false;
+let gameOver = true;
 let hitABomb = false;
+let flagCount = 0;
+const easyBtn = document.querySelector('#easy');
+const medBtn = document.querySelector('#med');
+const advBtn = document.querySelector('#hard');
+const flagCounter = document.getElementById('flagCount');
+const startBtnHTML = document.querySelectorAll('.startBtn');
 
 //////////////////////
 // Functions        //
@@ -134,7 +140,7 @@ const gameStatus = (gameGridReady) => {
   let bombsTotal = 0;
   for (let i=0; i<gameGridReady.length; i++) {
     for (let j=0; j<gameGridReady[0].length; j++) {
-      if (gameGrid[i][j] === 'bomb') {
+      if (gameGridReady[i][j] === 'bomb') {
         bombsTotal += 1;
       }
     }
@@ -157,6 +163,22 @@ const gameStatus = (gameGridReady) => {
   }
 }
 
+const startGame = (gridRow, gridCol, bombs) => {
+  if (gameOver) {
+    gameOver = false;
+    document.getElementById('gridBody').innerHTML = "";
+    let gameGrid = makeGrid(gridRow, gridCol);
+    divMatrix(lookNearby(populateGrid(gameGrid, bombs)));
+    Array.from(startBtnHTML).forEach(element => {
+      element.style.pointerEvents = 'none';
+    });
+  } //else do nothing
+}
+
+//////////////////////
+// Event Listeners  //
+//////////////////////
+
 //Make buttons and place them into the grid with event listeners.
 const makeBtn = (index1, index2, gameGridReady) => {
   let newBtn = document.createElement('button');
@@ -167,24 +189,21 @@ const makeBtn = (index1, index2, gameGridReady) => {
   newBtn.addEventListener(('click'), (e) => {
     //See if the there is a bomb at the grid coordinate, else if 0 start click events on neighbors, else reveal tile and stop.
     if (e.shiftKey === true) {
-      console.log('Shifted!');
       if (newBtn.classList.contains('flagged')) {
         newBtn.classList.remove('flagged');
+        flagCount -= 1;
       } else {
         newBtn.classList.add('flagged');
+        flagCount += 1;
       }
+      flagCounter.innerHTML = flagCount;
     } else {
       if (newBtn.classList.contains('flagged')) {
         //Do Nothing!
         return;
       } else if (gameGridReady[index1][index2] === 'bomb') {
         alert('Oh no, you died! Game Over!');
-        //Need to end the game
         document.getElementById(`cell${index1}-${index2}`).style.backgroundColor = 'orange';
-        let buttonsOff = document.getElementsByClassName('gameBtn');
-        Array.from(buttonsOff).forEach(element => {
-          element.style.pointerEvents = 'none';
-        });
         hitABomb = true;
         gameOver = true;
       } else if(gameGridReady[index1][index2] == 0) {
@@ -214,18 +233,47 @@ const makeBtn = (index1, index2, gameGridReady) => {
       newBtn.style.visibility = 'hidden';
       document.getElementById(`value${index1}-${index2}`).style.display = 'block';
       gameStatus(gameGridReady);
+      if (gameOver) {
+        let buttonsOff = document.getElementsByClassName('gameBtn');
+        Array.from(buttonsOff).forEach(element => {
+          element.style.pointerEvents = 'none';
+        });
+        Array.from(startBtnHTML).forEach(element => {
+          element.style.pointerEvents = 'auto';
+        });
+      }
     }});
   // newBtn.addEventListener(('auxclick'), () => {});
   return newBtn;
 }
 
-//This will be set to a start game button. Use to test for now.
-let gameGrid = makeGrid(8, 8);
-// console.log(gameGrid);
-// console.log(gameGrid[2].length);
-let gameGridMined = lookNearby(populateGrid(gameGrid, 6));
-console.log(gameGridMined);
-divMatrix(gameGridMined);
+easyBtn.addEventListener('click', () => {
+  document.getElementById('bombCount').innerHTML = 8;
+  startGame(8, 8, 8);
+});
+
+medBtn.addEventListener('click', () => {
+  document.getElementById('bombCount').innerHTML = 40;
+  startGame(16, 14, 40);
+});
+
+advBtn.addEventListener('click', () => {
+  document.getElementById('bombCount').innerHTML = 99;
+  startGame(30, 16, 99);
+});
+
+//////////////////////
+// Other Notes      //
+//////////////////////
+
+// //This will be set to a start game button. Use to test for now.
+// let gameGrid = makeGrid(8, 8);
+// // console.log(gameGrid);
+// // console.log(gameGrid[2].length);
+// let gameGridMined = lookNearby(populateGrid(gameGrid, 8));
+// console.log(gameGridMined);
+// divMatrix(gameGridMined);
+
 // To test.
 // {
 //   for (let g=0; g<1; g++) {
@@ -237,17 +285,6 @@ divMatrix(gameGridMined);
 // }
 // The above needs to go into a function.
 
-
-
-//////////////////////
-// Event Listeners  //
-//////////////////////
-
-//start
-
-//////////////////////
-// Other Notes      //
-//////////////////////
 
 // Create function to flag tiles with 'alternate click'; can add/remove a 'flagged' class to the button, preferably adding a graphic to the inside.
 

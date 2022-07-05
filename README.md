@@ -41,3 +41,4 @@
 - #### Patrick Knight (myself, as an example)
 - #### General Assembly (projech assigner, as example)
 - #### for insight on useful techniques mdn : https://developer.mozilla.org/en-US/
+- #### For some helpful coding ideas, github user kubowania's minesweeper was worth a review: https://github.com/kubowania/minesweeper/blob/master/app.js
