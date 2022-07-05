@@ -1,11 +1,47 @@
+/* Start with overall styling; remember that order matters! */
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Kdam+Thmor+Pro&display=swap');
+
+body {
+  /* Placement attributes */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* General attributes */
+  background-color: cadetblue;
+  font-family: 'Kdam Thmor Pro', sans-serif;
+  text-align: center;
+}
+
+#interface {
+  /* Placement attributes */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* General attributes */
+  border: solid 1px black;
+  max-width: 500px;
+  background-color: gray;
+  padding: 10px;
+  margin: 10px auto;
+}
+
+.startBtn {
+    /* Placement attributes */
+    align-self: stretch;
+}
+
 #gridBody {
+  /* Placement attributes */
   display: flex;
   flex-direction: column;
   /* will need to change the template dynamically, with js? */
   /* Can also do flex of flex (div rows hold array of spans. */
+  border: solid 5px black;
 }
 
 .gameRows {
+  /* Placement attributes */
   display: flex;
   flex-direction: row;
   /*For testing*/
@@ -20,7 +56,7 @@
   height: 40px;
   border: dotted 1px black;
   text-align: center;
-
+  font-family: 'Bungee', cursive;
 }
 
 .gameBtn {
@@ -31,8 +67,8 @@
 }
 
 .cellValue {
+  /* Placement attributes */
   display: none;
-  /* visibility: hidden; */
 }
 
 .flagged {
