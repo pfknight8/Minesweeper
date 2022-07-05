@@ -55,12 +55,13 @@ const lookNearby = (gameGridMined) => {
   for (let i=0; i<=iMax; i++) {
     for (let j=0; j<=jMax; j++) {
       if (gameGridMined[i][j] === 'bomb') {
-        //Skip
+        //Skip over 'bombs';
       } else if (i>0 && i<iMax) {
+        // for the "body" of the grid
         for (let rowIn=i-1; rowIn<=i+1; rowIn++) {
           for (let colIn=j-1; colIn<=j+1; colIn++) {
             if (colIn < 0 || colIn > jMax) {
-              //Skip
+              //Skip if cell doesn't exist
             } else {
               if(gameGridMined[rowIn][colIn] === 'bomb') {
                 bombCount+=1;
@@ -71,10 +72,11 @@ const lookNearby = (gameGridMined) => {
         gameGridMined[i][j] = bombCount;
         bombCount = 0;
       } else if (i == 0) {
+        // for the top row
         for (let rowIn=i; rowIn<=i+1; rowIn++) {
           for (let colIn=j-1; colIn<=j+1; colIn++) {
             if (colIn < 0 || colIn > jMax) {
-              //Skip
+              //Skip if cell doesn't exish
             } else {
               if(gameGridMined[rowIn][colIn] === 'bomb') {
                 bombCount+=1;
@@ -85,6 +87,7 @@ const lookNearby = (gameGridMined) => {
         gameGridMined[i][j] = bombCount;
         bombCount = 0;
       } else if (i == iMax) {
+        // for the bottom row
         for (let rowIn=i-1; rowIn<=i; rowIn++) {
           for (let colIn=j-1; colIn<=j+1; colIn++) {
             if (colIn < 0 || colIn > jMax) {
@@ -104,7 +107,7 @@ const lookNearby = (gameGridMined) => {
   return gameGridMined;
 }
 
-// Create divs -- test working live, will need to put into a function:
+// Create divs in html to hold the game grid & buttons
 const divMatrix = (gameGridReady) => {
   let rowMax = gameGridReady.length;
   let colMax = gameGridReady[0].length;
@@ -130,9 +133,8 @@ const divMatrix = (gameGridReady) => {
   }
 }
 
+  //Check to see if the game has been won
 const gameStatus = (gameGridReady) => {
-  //Checks to see if the game has been won
-  // let evalBtns = document.getElementsByClassName('gameBtn');
   let incorrectMark = 0;
   let correctMark = 0;
   let unclickedTiles = 0;
@@ -145,6 +147,7 @@ const gameStatus = (gameGridReady) => {
       }
     }
   }
+  //Count 'flag', 'bomb', and 'hidden' conditions of board to see if game has eneded (win; loss is in the eventlistener).
   for (let i=0; i<gameGridReady.length; i++) {
     for (let j=0; j<gameGridReady[0].length; j++) {
       let evalBtn = document.getElementById(`gridBtn${i}-${j}`);
@@ -163,6 +166,7 @@ const gameStatus = (gameGridReady) => {
   }
 }
 
+// Initiates game; resets gridBody, 'flag' count, and gameOver, while disabling game level options.
 const startGame = (gridRow, gridCol, bombs) => {
   if (gameOver) {
     gameOver = false;
@@ -201,28 +205,30 @@ const makeBtn = (index1, index2, gameGridReady) => {
       }
       flagCounter.innerHTML = flagCount;
     } else {
+      let targetCell = document.getElementById(`cell${index1}-${index2}`);
       if (newBtn.classList.contains('flagged')) {
         //Do Nothing!
         return;
       } else if (gameGridReady[index1][index2] === 'bomb') {
         alert('Oh no, you died! Game Over!');
-        document.getElementById(`cell${index1}-${index2}`).style.backgroundColor = 'orange';
+        targetCell.style.backgroundColor = 'orange';
         hitABomb = true;
         gameOver = true;
       } else if(gameGridReady[index1][index2] == 0) {
+        targetCell.style.color = 'transparent';
         //Start 'click' on all nearby tiles.
         for (let a=index1-1; a<=index1+1; a++) {
           if (a < 0 || a > maxRowIndex) {
-            //Skip
+            //Skip if row doesn't exist
           } else {
             for (let b=index2-1; b<=index2+1; b++) {
               if (b < 0 || b > maxColIndex) {
-                //Skip
+                //Skip if column doesn't exist
               } else {
                 if (a === index1 && b === index2) {
-                  //Skip
+                  //Skip if in the same cell.
                 } else {
-                  //Emulate the click. Could also set element style to change txt color (goal to hide 0).
+                  //Emulate the click.
                   let nextBtn = document.getElementById(`gridBtn${a}-${b}`);
                   if (newBtn.style.visibility !== 'hidden') {
                     nextBtn.click();
@@ -231,6 +237,33 @@ const makeBtn = (index1, index2, gameGridReady) => {
               }
             }
           }
+        }
+      } else {
+        switch(gameGridReady[index1][index2]) {
+          case 1:
+            targetCell.style.color = 'blue';
+            break;
+          case 2:
+            targetCell.style.color = 'darkgreen';
+            break;
+          case 3:
+            targetCell.style.color = 'firebrick';
+            break;
+          case 4:
+            targetCell.style.color = 'indigo';
+            break;
+          case 5:
+            targetCell.style.color = 'brown';
+            break;
+          case 6:
+            targetCell.style.color = 'chartreuse';
+            break;
+          case 7:
+            targetCell.style.color = 'goldenrod';
+            break;
+          case 8:
+            targetCell.style.color = 'blueviolet';
+            break;
         }
       }
       newBtn.style.visibility = 'hidden';

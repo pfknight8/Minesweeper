@@ -11,7 +11,7 @@
 
 ### **_Other Links_**
 
-[LinkedIn](https://www.linkedin.com/in/patrick-knight-5a080755/) | [Github](https://www.github.com/pfknight8)
+[LinkedIn](https://www.linkedin.com/in/patrick-f-knight/) | [Github](https://www.github.com/pfknight8)
 
 ---
 
