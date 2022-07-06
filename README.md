@@ -27,9 +27,9 @@
 
 #### Will need to create the necessary html, js, and css files.
 
-- [ ] Will need to create the necessary html, js, and css files.
-- [ ] Will need to plan out the logic of the game, and write it into js.
-- [ ] Will need to supply a basic set of elements & style to test the js (html & css).
+- [x] Will need to create the necessary html, js, and css files.
+- [x] Will need to plan out the logic of the game, and write it into js.
+- [x] Will need to supply a basic set of elements & style to test the js (html & css).
 - [ ] Will need to styl the game for presentation.
 
 ---

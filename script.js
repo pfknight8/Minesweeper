@@ -6,13 +6,13 @@
 
 //start
 let gameOver = true;
-let hitABomb = false;
 let flagCount = 0;
 const easyBtn = document.querySelector('#easy');
 const medBtn = document.querySelector('#med');
 const advBtn = document.querySelector('#hard');
 const flagCounter = document.getElementById('flagCount');
 const startBtnHTML = document.querySelectorAll('.startBtn');
+const gameMsg = document.getElementById('resultMsg');
 
 //////////////////////
 // Functions        //
@@ -38,7 +38,7 @@ const populateGrid = (gameGrid, numBombs) => {
     let i = Math.floor(Math.random()*gameGrid.length);
     let j = Math.floor(Math.random()*gameGrid[0].length); //assumes all inner arrays have same length.
     if (gameGrid[i][j] === null) {
-      gameGrid[i][j] = 'bomb';
+      gameGrid[i][j] = 'bb';
       numBombs--;
     }
   }
@@ -54,7 +54,7 @@ const lookNearby = (gameGridMined) => {
   let bombCount = 0;
   for (let i=0; i<=iMax; i++) {
     for (let j=0; j<=jMax; j++) {
-      if (gameGridMined[i][j] === 'bomb') {
+      if (gameGridMined[i][j] === 'bb') {
         //Skip over 'bombs';
       } else if (i>0 && i<iMax) {
         // for the "body" of the grid
@@ -63,7 +63,7 @@ const lookNearby = (gameGridMined) => {
             if (colIn < 0 || colIn > jMax) {
               //Skip if cell doesn't exist
             } else {
-              if(gameGridMined[rowIn][colIn] === 'bomb') {
+              if(gameGridMined[rowIn][colIn] === 'bb') {
                 bombCount+=1;
               }
             }
@@ -78,7 +78,7 @@ const lookNearby = (gameGridMined) => {
             if (colIn < 0 || colIn > jMax) {
               //Skip if cell doesn't exish
             } else {
-              if(gameGridMined[rowIn][colIn] === 'bomb') {
+              if(gameGridMined[rowIn][colIn] === 'bb') {
                 bombCount+=1;
               }
             }
@@ -93,7 +93,7 @@ const lookNearby = (gameGridMined) => {
             if (colIn < 0 || colIn > jMax) {
               //Skip
             } else {
-              if(gameGridMined[rowIn][colIn] === 'bomb') {
+              if(gameGridMined[rowIn][colIn] === 'bb') {
                 bombCount+=1;
               }
             }
@@ -124,7 +124,40 @@ const divMatrix = (gameGridReady) => {
       newP.id = `value${k}-${x}`;
       newP.innerHTML = gameGridReady[k][x];
       newDivCell.appendChild(newP);
-      cellBtn = makeBtn(k, x, gameGridReady);
+      cellBtn = makeBtn(k, x, gameGridReady); //1st event listener
+      //Add double-click feature;
+      if (newDivCell.innerHTML !== 'bb' && newDivCell.innerHTML !== 0) {
+        //count nearby flagged vs bomb
+        newDivCell.addEventListener('dblclick', () => {
+          let adjFlagged = 0;
+          let adjBomb = 0;
+          for (let kIn=k-1; kIn<=k+1; kIn++) {
+            if (kIn<0 || kIn>=rowMax) {
+              //Skip nonexistant
+            } else { 
+              for (let xIn=x-1; xIn<=x+1; xIn++) {
+                if (xIn<0 || xIn>=colMax) {
+                  //Skip nonexistant
+                } else {
+                  if (kIn===k && xIn===x) {
+                    //Skip over same cell
+                  } else {
+                    //get flagged button count.
+                    let nextBtn = document.getElementById(`gridBtn${kIn}-${xIn}`);
+                    if (nextBtn.classList.contains('flagged')) {
+                      adjFlagged += 1;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          // console.log(adjFlagged + " " + newP.innerHTML);
+          if (adjFlagged == newP.innerHTML) {
+            clickAdjacent(k, x, gameGridReady);
+          }
+        });
+      }
       newDivCell.appendChild(cellBtn);
       newDivRow.appendChild(newDivCell);
     }
@@ -142,7 +175,7 @@ const gameStatus = (gameGridReady) => {
   let bombsTotal = 0;
   for (let i=0; i<gameGridReady.length; i++) {
     for (let j=0; j<gameGridReady[0].length; j++) {
-      if (gameGridReady[i][j] === 'bomb') {
+      if (gameGridReady[i][j] === 'bb') {
         bombsTotal += 1;
       }
     }
@@ -151,18 +184,46 @@ const gameStatus = (gameGridReady) => {
   for (let i=0; i<gameGridReady.length; i++) {
     for (let j=0; j<gameGridReady[0].length; j++) {
       let evalBtn = document.getElementById(`gridBtn${i}-${j}`);
-      if (evalBtn.classList.contains('flagged') && gameGridReady[i][j] !== 'bomb') {
+      if (evalBtn.classList.contains('flagged') && gameGridReady[i][j] !== 'bb') {
         incorrectMark += 1;
-      } else if (evalBtn.classList.contains('flagged') && gameGridReady[i][j] === 'bomb') {
+      } else if (evalBtn.classList.contains('flagged') && gameGridReady[i][j] === 'bb') {
         correctMark += 1;
-      } else if (gameGridReady[i][j] !== 'bomb' && evalBtn.style.visibility !== 'hidden') {
+      } else if (gameGridReady[i][j] !== 'bb' && evalBtn.style.visibility !== 'hidden') {
         unclickedTiles += 1;
       }
     }
   }
   if (correctMark === bombsTotal && incorrectMark === 0 && unclickedTiles ===0) {
-    alert("Win!");
+    gameMsg.innerHTML = "Win!";
     gameOver = true;
+  }
+}
+
+//Function to initiate click on adjacent tiles.
+const clickAdjacent = (index1, index2, gameGridReady) => {
+  let maxRowIndex = gameGridReady.length-1;
+  let maxColIndex = gameGridReady[0].length-1;
+  //Start 'click' on all nearby tiles.
+  for (let a=index1-1; a<=index1+1; a++) {
+    if (a < 0 || a > maxRowIndex) {
+      //Skip if row doesn't exist
+    } else {
+      for (let b=index2-1; b<=index2+1; b++) {
+        if (b < 0 || b > maxColIndex) {
+          //Skip if column doesn't exist
+        } else {
+          if (a === index1 && b === index2) {
+            //Skip if in the same cell.
+          } else {
+            //Emulate the click.
+            let nextBtn = document.getElementById(`gridBtn${a}-${b}`);
+            if (nextBtn.style.visibility !== 'hidden') {
+              nextBtn.click();
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -173,6 +234,7 @@ const startGame = (gridRow, gridCol, bombs) => {
     document.getElementById('gridBody').innerHTML = "";
     flagCount =0;
     flagCounter.innerHTML = 0;
+    gameMsg.innerHTML = "Game Time!";
     document.getElementById('bombCount').innerHTML = bombs;
     let gameGrid = makeGrid(gridRow, gridCol);
     divMatrix(lookNearby(populateGrid(gameGrid, bombs)));
@@ -189,8 +251,6 @@ const startGame = (gridRow, gridCol, bombs) => {
 //Make buttons and place them into the grid with event listeners.
 const makeBtn = (index1, index2, gameGridReady) => {
   let newBtn = document.createElement('button');
-  let maxRowIndex = gameGridReady.length-1;
-  let maxColIndex = gameGridReady[0].length-1;
   newBtn.id = `gridBtn${index1}-${index2}`;
   newBtn.classList.add('gameBtn');
   newBtn.addEventListener(('click'), (e) => {
@@ -209,35 +269,14 @@ const makeBtn = (index1, index2, gameGridReady) => {
       if (newBtn.classList.contains('flagged')) {
         //Do Nothing!
         return;
-      } else if (gameGridReady[index1][index2] === 'bomb') {
-        alert('Oh no, you died! Game Over!');
+      } else if (gameGridReady[index1][index2] === 'bb') {
+        gameMsg.innerHTML = 'Oh no, you died! Game Over!';
         targetCell.style.backgroundColor = 'orange';
-        hitABomb = true;
         gameOver = true;
       } else if(gameGridReady[index1][index2] == 0) {
         targetCell.style.color = 'transparent';
         //Start 'click' on all nearby tiles.
-        for (let a=index1-1; a<=index1+1; a++) {
-          if (a < 0 || a > maxRowIndex) {
-            //Skip if row doesn't exist
-          } else {
-            for (let b=index2-1; b<=index2+1; b++) {
-              if (b < 0 || b > maxColIndex) {
-                //Skip if column doesn't exist
-              } else {
-                if (a === index1 && b === index2) {
-                  //Skip if in the same cell.
-                } else {
-                  //Emulate the click.
-                  let nextBtn = document.getElementById(`gridBtn${a}-${b}`);
-                  if (newBtn.style.visibility !== 'hidden') {
-                    nextBtn.click();
-                  }
-                }
-              }
-            }
-          }
-        }
+        clickAdjacent(index1, index2, gameGridReady);
       } else {
         switch(gameGridReady[index1][index2]) {
           case 1:
@@ -296,6 +335,7 @@ advBtn.addEventListener('click', () => {
   startGame(30, 16, 99);
 });
 
+
 //////////////////////
 // Other Notes      //
 //////////////////////
@@ -325,3 +365,4 @@ advBtn.addEventListener('click', () => {
 // Need to check winning conditions: set global variable for 'game over' and 'hitbomb' where both being true means a loss, 'game over' true and 'hitbomb' false means win. 'game over' will have to check that all tiles are either 'hidden' or 'flagged'...may need to check that only bombs are flagged: check that all 'bomb' are flagged and that all non-'bomb' tiles are 'hidden' and not 'flag'.
 
 //Double click on a number to reveal all neighboring tiles: Would have to assign to grid div with number value, then it would have to check neighboring cells to see if still have buttons, then would check if number of buttons with 'flagged' class matches its count, then initiate click on all non-hidden tiles around it.
+
