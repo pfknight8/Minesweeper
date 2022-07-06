@@ -13,6 +13,7 @@ const advBtn = document.querySelector('#hard');
 const flagCounter = document.getElementById('flagCount');
 const startBtnHTML = document.querySelectorAll('.startBtn');
 const gameMsg = document.getElementById('resultMsg');
+const descrBtn = document.getElementById('descrToggle');
 
 //////////////////////
 // Functions        //
@@ -327,6 +328,7 @@ const makeBtn = (index1, index2, gameGridReady) => {
   return newBtn;
 }
 
+//The event listeners for the level select buttons
 easyBtn.addEventListener('click', () => {
   startGame(8, 8, 8);
 });
@@ -337,6 +339,18 @@ medBtn.addEventListener('click', () => {
 
 advBtn.addEventListener('click', () => {
   startGame(30, 16, 99);
+});
+
+//Operates the hide/show button in the 'descriptions' section
+descrBtn.addEventListener('click', () => {
+  const divToHide = document.getElementById('hideable1');
+  if (divToHide.classList.contains('hidden')) {
+    divToHide.classList.remove('hidden');
+    descrBtn.innerHTML = '-';
+  } else {
+    divToHide.classList.add('hidden');
+    descrBtn.innerHTML = '+';
+  }
 });
 
 
