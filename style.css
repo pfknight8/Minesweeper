@@ -7,9 +7,13 @@ body {
   flex-direction: column;
   align-items: center;
   /* General attributes */
-  background-color: cadetblue;
+  background-color:rgba(64, 130, 109, 1);
   font-family: 'Kdam Thmor Pro', sans-serif;
   text-align: center;
+  background-image: url(https://i.imgur.com/PcFHoJf.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 header {
@@ -48,6 +52,8 @@ header {
   /* Can also do flex of flex (div rows hold array of spans. */
   border: solid 5px black;
   border-radius: 2px;
+  background-color: rgba(152, 168, 184, 1);
+  margin: 20px;
 }
 
 .gameRows {
@@ -60,8 +66,7 @@ header {
 }
 
 .gameCell {
-  /*For testing*/
-  background-color: rgba(152, 168, 184, 1);
+  /* background-color: rgba(152, 168, 184, 1); */
   margin: 0px;
   width: 25px;
   height: 25px;
@@ -95,6 +100,34 @@ header {
   display: none;
 }
 
+.bomb {
+  background-image: url(https://game-icons.net/icons/ffffff/000000/1x1/lorc/wolf-trap.svg);
+  background-clip: padding-box;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+}
+
 .flagged {
-  background-color: palegoldenrod;
+  /* background-color: palegoldenrod; */
+  background-image: url(https://game-icons.net/icons/ffffff/000000/1x1/lorc/flying-flag.svg);
+  background-clip: padding-box;
+  background-repeat: no-repeat;
+}
+
+/* Formatting the descriptions section. */
+
+#descriptions {
+  width: 80vw;
+  text-align: justify;
+  padding: 10px;
+  background-color: rgba(152, 168, 184, .7);
+  border: solid 5px rgba(22, 38, 54, .7);
+  border-radius: 5px;
+}
+
+
+.unl {
+  text-decoration: underline;
+  /* color:rgba(64, 130, 109, 1); */
 }

@@ -123,6 +123,9 @@ const divMatrix = (gameGridReady) => {
       newP.classList.add('cellValue');
       newP.id = `value${k}-${x}`;
       newP.innerHTML = gameGridReady[k][x];
+      if (newP.innerHTML === 'bb') {
+        newDivCell.classList.add('bomb');
+      }
       newDivCell.appendChild(newP);
       cellBtn = makeBtn(k, x, gameGridReady); //1st event listener
       //Add double-click feature;
@@ -271,7 +274,8 @@ const makeBtn = (index1, index2, gameGridReady) => {
         return;
       } else if (gameGridReady[index1][index2] === 'bb') {
         gameMsg.innerHTML = 'Oh no, you died! Game Over!';
-        targetCell.style.backgroundColor = 'orange';
+        targetCell.style.color = 'transparent';
+        targetCell.style.backgroundColor = 'orangered';
         gameOver = true;
       } else if(gameGridReady[index1][index2] == 0) {
         targetCell.style.color = 'transparent';
@@ -347,22 +351,3 @@ advBtn.addEventListener('click', () => {
 // let gameGridMined = lookNearby(populateGrid(gameGrid, 8));
 // console.log(gameGridMined);
 // divMatrix(gameGridMined);
-
-// To test.
-// {
-//   for (let g=0; g<1; g++) {
-//     for (let h=0; h<8; h++) {
-//       //
-//       document.getElementById(`cell${g}-${h}`).innerHTML = "bomb"
-//     }
-//   }
-// }
-// The above needs to go into a function.
-
-
-// Create function to flag tiles with 'alternate click'; can add/remove a 'flagged' class to the button, preferably adding a graphic to the inside.
-
-// Need to check winning conditions: set global variable for 'game over' and 'hitbomb' where both being true means a loss, 'game over' true and 'hitbomb' false means win. 'game over' will have to check that all tiles are either 'hidden' or 'flagged'...may need to check that only bombs are flagged: check that all 'bomb' are flagged and that all non-'bomb' tiles are 'hidden' and not 'flag'.
-
-//Double click on a number to reveal all neighboring tiles: Would have to assign to grid div with number value, then it would have to check neighboring cells to see if still have buttons, then would check if number of buttons with 'flagged' class matches its count, then initiate click on all non-hidden tiles around it.
-
