@@ -27,6 +27,16 @@
 #### Win or lose, if you wish to play again, simply click on one of the level select buttons and a new minefield will appear.
 ---
 
+## **_Screenshots_**
+
+![opened](https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/OpeningPage.png
+
+![gameOn]https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/GameProgressing.png
+
+![infoShown]https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/OpenInfoBox.png
+
+---
+
 ## **_Future Updates_**
 
 #### Some things to consider if I have time to come back to this after the course.
