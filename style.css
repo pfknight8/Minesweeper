@@ -216,6 +216,21 @@ li {
   border-radius: 5px; */
 }
 
+a:link {
+  color: rgba(128, 32, 32, 1);
+}
+a:hover {
+  color:rgba(195, 176, 145, 1);
+  text-decoration: none;
+}
+a:visited {
+  color: rgba(32, 32, 32, 1);
+}
+a:active {
+  color:rgba(128, 128, 128, 1);
+  text-decoration: none;
+}
+
 /* ============================================== */
 /* Media Queries */
 /* ============================================== */
