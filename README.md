@@ -29,11 +29,11 @@
 
 ## **_Screenshots_**
 
-![opened](https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/OpeningPage.png
+![opened](https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/OpeningPage.png)
 
-![gameOn]https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/GameProgressing.png
+![gameOn](https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/GameProgressing.png)
 
-![infoShown]https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/OpenInfoBox.png
+![infoShown](https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/OpenInfoBox.png)
 
 ---
 
