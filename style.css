@@ -2,13 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Kdam+Thmor+Pro&display=swap');
 
 html {
-  background-color:rgba(64, 130, 109, 1);
-  background-image: url(https://i.imgur.com/PcFHoJf.jpeg);
+  background-color: rgb(255, 247, 243);
+  /* background-image: url(https://i.imgur.com/PcFHoJf.jpeg); */
+  background-image: url(https://i.imgur.com/2A0A65A.jpeg);
   background-size: cover;
-  background-position: center;
+  /* background-position: center; */
   background-repeat: no-repeat;
-  /* width: 100vw; */
-  height: 90vh;
+  width: 100vw;
+  /* height: 90vh; */
   /* General attributes */
   font-family: 'Kdam Thmor Pro', sans-serif;
   text-align: center;
@@ -37,7 +38,7 @@ header {
   /* General attributes */
   border: solid 2px black;
   border-radius: 2px;
-  max-width: 500px;
+  max-width: 450px;
   background-color: gray;
   padding: 10px;
   margin: 10px auto;
@@ -47,10 +48,23 @@ header {
   /* Placement attributes */
   width: 90px;
   margin: 5px;
-  border-color: rgba(64, 130, 109, 1);
-  border-radius: 2px;
+  border-color: black;
+  border-radius: 4px;
   font-family: 'Kdam Thmor Pro', sans-serif;
 }
+
+#flagStatement {
+  background-color: rgba(90, 90, 90, 1);
+  border-top: solid 4px rgba(0, 0, 0, 1);
+  border-left: solid 4px rgba(0, 0, 0, 1);
+  border-right: solid 4px rgba(40, 40, 40, 1);
+  border-bottom: solid 4px rgba(40, 40, 40, 1);
+  border-radius: 5px;
+  padding: 10px;
+  color: rgba(195, 176, 145, 1);
+}
+
+/* Formatting for the body */
 
 #gridBody {
   /* Placement attributes */
@@ -60,7 +74,7 @@ header {
   /* Can also do flex of flex (div rows hold array of spans. */
   border: solid 5px black;
   border-radius: 2px;
-  background-color: rgba(152, 168, 184, 1);
+  background-color: rgba(0, 0, 0, .6);
   margin: 20px;
 }
 
@@ -71,6 +85,7 @@ header {
   justify-content: space-evenly;
   align-items: center;
   /*For testing*/
+  color: go
 }
 
 .gameCell {
@@ -78,7 +93,7 @@ header {
   margin: 0px;
   width: 25px;
   height: 25px;
-  border: dotted 1px rgba(64, 130, 109, 1);
+  border: dotted 1px rgba(195, 176, 145, 1);
   text-align: center;
   font-family: 'Bungee', cursive;
   font-size: 10px;
@@ -88,19 +103,19 @@ header {
   /* display: contents; */
   width: 25px;
   height: 25px;
-  background-color: rgba(64, 130, 109, 1);
-  border-top: solid 3px rgba(74, 140, 119, 1);
-  border-left: solid 3px rgba(74, 140, 119, 1);
-  border-right: solid 3px rgba(54, 120, 99, 1);
-  border-bottom: solid 3px rgba(54, 120, 99, 1);
+  background-color: rgba(195, 176, 145, 1);
+  border-top: solid 3px rgba(215, 196, 165, 1);
+  border-left: solid 3px rgba(215, 196, 165, 1);
+  border-right: solid 3px rgba(175, 156, 125, 1);
+  border-bottom: solid 3px rgba(175, 156, 125, 1);
 }
 
 .gameBtn:active {
-  background-color: rgba(64, 130, 109, 1);
-  border-top: solid 3px rgba(54, 120, 99, 1);
-  border-left: solid 3px rgba(54, 120, 99, 1);
-  border-right: solid 3px rgba(74, 140, 119, 1);
-  border-bottom: solid 3px rgba(74, 140, 119, 1);
+  background-color: rgba(195, 176, 145, 1);
+  border-top: solid 3px rgba(175, 156, 125, 1);
+  border-left: solid 3px rgba(175, 156, 125, 1);
+  border-right: solid 3px rgba(215, 196, 165, 1);
+  border-bottom: solid 3px rgba(215, 196, 165, 1);
 }
 
 .cellValue {
@@ -126,11 +141,12 @@ header {
 /* Formatting the descriptions section. */
 
 #descriptions {
-  width: 80vw;
+  width: 90vw;
+  max-width: 800px;
   text-align: justify;
   padding: 10px;
-  background-color: rgba(152, 168, 184, .7);
-  border: solid 5px rgba(22, 38, 54, .7);
+  background-color: rgba(184, 168, 152, .7);
+  border: solid 5px rgba(54, 38, 22, .7);
   border-radius: 5px;
 }
 
@@ -142,12 +158,12 @@ header {
 #descrToggle {
   width: 20px;
   background-color: transparent;
-  border: solid 2px rgba(22, 38, 54, .7);
+  border: solid 2px rgba(54, 38, 22, .7);
   border-radius: 5px;
   align-self: center;
 }
 #descrToggle:active, #descrToggle:hover {
-  background-color: rgba(22, 38, 54, .7);
+  background-color: rgba(54, 38, 22, .7);
 }
 
 .unl {

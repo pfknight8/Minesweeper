@@ -285,28 +285,28 @@ const makeBtn = (index1, index2, gameGridReady) => {
       } else {
         switch(gameGridReady[index1][index2]) {
           case 1:
-            targetCell.style.color = 'blue';
+            targetCell.style.color = 'cornflowerblue';
             break;
           case 2:
-            targetCell.style.color = 'darkgreen';
-            break;
-          case 3:
-            targetCell.style.color = 'firebrick';
-            break;
-          case 4:
-            targetCell.style.color = 'indigo';
-            break;
-          case 5:
-            targetCell.style.color = 'brown';
-            break;
-          case 6:
             targetCell.style.color = 'chartreuse';
             break;
+          case 3:
+            targetCell.style.color = '#FF3333';
+            break;
+          case 4:
+            targetCell.style.color = 'blueviolet';
+            break;
+          case 5:
+            targetCell.style.color = 'pink';
+            break;
+          case 6:
+            targetCell.style.color = 'white';
+            break;
           case 7:
-            targetCell.style.color = 'goldenrod';
+            targetCell.style.color = '#FFD700';
             break;
           case 8:
-            targetCell.style.color = 'blueviolet';
+            targetCell.style.color = 'indigo';
             break;
         }
       }
