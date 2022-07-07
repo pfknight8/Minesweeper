@@ -3,13 +3,10 @@
 
 html {
   background-color: rgb(255, 247, 243);
-  /* background-image: url(https://i.imgur.com/PcFHoJf.jpeg); */
   background-image: url(https://i.imgur.com/2A0A65A.jpeg);
   background-size: cover;
-  /* background-position: center; */
   background-repeat: no-repeat;
   width: 100vw;
-  /* height: 90vh; */
   /* General attributes */
   font-family: 'Kdam Thmor Pro', sans-serif;
   text-align: center;
@@ -33,15 +30,14 @@ header {
   /* Placement attributes */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   /* General attributes */
-  /* border: solid 2px black; */
   border-top: solid 6px rgba(40, 40, 40, 1);
   border-left: solid 6px rgba(40, 40, 40, 1);
   border-right: solid 6px rgba(0, 0, 0, 1);
   border-bottom: solid 6px rgba(0, 0, 0, 1);
   border-radius: 5px;
+  width: 380px;
   max-width: 450px;
   background-color: gray;
   background-image: linear-gradient(135deg, rgba(190, 190, 190, 1), rgb(128, 128, 128));
@@ -52,6 +48,10 @@ header {
 #startBtns {
   display: flex;
   justify-content: space-evenly;
+}
+
+#counters, #resultMsgBox {
+  width: 75%;
 }
 
 .startBtn {
@@ -74,7 +74,9 @@ header {
   color: rgba(195, 176, 145, 1);
 }
 
+/* ============================================== */
 /* Formatting for the body */
+/* ============================================== */
 
 #gridBody {
   /* Placement attributes */
@@ -82,8 +84,11 @@ header {
   flex-direction: column;
   /* will need to change the template dynamically, with js? */
   /* Can also do flex of flex (div rows hold array of spans. */
-  border: solid 5px black;
-  border-radius: 2px;
+  border-top: solid 10px rgba(40, 40, 40, 1);
+  border-left: solid 10px rgba(40, 40, 40, 1);
+  border-right: solid 10px rgba(0, 0, 0, 1);
+  border-bottom: solid 10px rgba(0, 0, 0, 1);
+  border-radius: 5px;
   background-color: rgba(0, 0, 0, .6);
   margin: 20px;
 }
@@ -152,10 +157,22 @@ header {
   background-repeat: no-repeat;
 }
 
+
+/* ============================================== */
 /* Formatting the descriptions section. */
+/* ============================================== */
+
+ul {
+  list-style: disc;
+  padding-left: 0.25in;
+}
+
+li {
+  margin: 5px;
+}
 
 #descriptions {
-  width: 90vw;
+  width: 85vw;
   max-width: 800px;
   text-align: justify;
   padding: 10px;
@@ -199,12 +216,29 @@ header {
   border-radius: 5px; */
 }
 
+/* ============================================== */
+/* Media Queries */
+/* ============================================== */
+
 @media screen and (max-width: 400px) {
   #interface {
     width: 80vw;
+  }
+  #counters, #resultMsgBox {
+    width: 95%;
   }
   #startBtns {
     display: flex;
     flex-direction: column;
   }
+  #hard {
+    display: none;
+  }
+  #descriptions {
+    font-size: smaller;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }  
 }

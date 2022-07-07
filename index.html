@@ -11,20 +11,23 @@
 <body>
   <main>
     <header>
-      <h1>"Minesweeper" (may change)</h1>
-      <div id='interface'>
-        <h2>Select a level:</h2>
-        <div id="startBtns">
-          <button id="easy" class="startBtn">Quick</button>
-          <button id="med" class="startBtn">Intermediate</button>
-          <button id="hard" class="startBtn">Epic</button>
-        </div>
-        <div id="counters">
-          <p id="flagStatement">Flagged: <span id="flagCount">0</span> / <span id="bombCount">0</span> Mines.</p>
-        </div>
-        <p id="resultMsg">Game Time!</p>
-      </div>
+      <h1>"Minesweeper"</h1>
+      <h4>Beach Edition</h4>
     </header>
+    <div id='interface'>
+      <h2>Select a level:</h2>
+      <div id="startBtns">
+        <button id="easy" class="startBtn">Quick</button>
+        <button id="med" class="startBtn">Intermediate</button>
+        <button id="hard" class="startBtn">Epic</button>
+      </div>
+      <div id="counters">
+        <p id="flagStatement">Flagged: <span id="flagCount">0</span> / <span id="bombCount">0</span> Mines.</p>
+      </div>
+      <div id="resultMsgBox">
+        <p id="resultMsg">Read Information for Controls</p>
+      </div>
+    </div>
     <section id="gridBody">
       <img id="spaceHolder" src="https://game-icons.net/icons/ffffff/000000/1x1/lorc/land-mine.svg">
     </section>
@@ -36,13 +39,14 @@
     </div>
     <div id="hideable1" class="hidden">
       <h3>Description</h3>
-      <p>The object of the game is to clear the board without activating any hazards. Use the numbers displayed in the tiles you have cleared to determine where the nearby hazards may be, then mark them with a 'flag.'<br />Once all the hazards have been properly marked and the rest of the game tiles cleared, you'll have won the game...but if you activate any one of the hazards, you'll lose the game, and will have to start a new one.</p>
+      <p>To start, select your desired game level by clicking the appropriate button.<br />The object of the game is to clear the board of tiles without activating any hazards. Use the numbers displayed in the tiles you have cleared to determine where the nearby hazards may be, then mark them with a "flag."<br />Once all the hazards have been properly marked and the rest of the game tiles cleared, you'll have won the game...but if you activate any one of the hazards, you'll lose, and will have to start a new game.<br />
+      Win or lose, if you wish to play again, simply click on one of the level select buttons and a new minefield will appear.</p>
       <p>
         <h3>Conrols:</h3>
         <ul>
-          <li><span class="unl">Mouse Single-Click:</span> to reveal tiles</li>
-          <li><span class="unl">Hold Shift + Mouse Single-Click:</span> flag a tile</li>
-          <li><span class="unl">Mouse Double-Click:</span> if placed matching number of flags around square, will quick reveal nearby tiles</li>
+          <li><span class="unl">Mouse Single-Click:</span> on tile to reveal it</li>
+          <li><span class="unl">Hold Shift + Mouse Single-Click:</span> on tile to flag it</li>
+          <li><span class="unl">Mouse Double-Click:</span> on exposed number, will quick-reveal nearby tiles if matches number of flags placed around it</li>
         </ul>
       </p>
     </div>
@@ -51,7 +55,7 @@
     <h2>Credits</h2>
     <p>Created by Patrick Knight, 7/8/2022</p>
     <p>Background picture from imgur.com (user Wadatahmydamie)</p>
-    <p>Icons grame-icons.net (user Lorc)</p>
+    <p>Icons from game-icons.net (user Lorc)</p>
   </section>
 </body>
 </html>

@@ -33,7 +33,7 @@ const makeGrid = (numRows, numCols) => {
   return gridMatix;
 }
 
-//Takes an array and places a set number of bombs within them.
+//Takes an array and places a set number of 'bombs' within them.
 const populateGrid = (gameGrid, numBombs) => {
   while (numBombs > 0) {
     let i = Math.floor(Math.random()*gameGrid.length);
@@ -198,7 +198,7 @@ const gameStatus = (gameGridReady) => {
     }
   }
   if (correctMark === bombsTotal && incorrectMark === 0 && unclickedTiles ===0) {
-    gameMsg.innerHTML = "Win!";
+    gameMsg.innerHTML = "You survived!";
     gameOver = true;
   }
 }
@@ -238,7 +238,7 @@ const startGame = (gridRow, gridCol, bombs) => {
     document.getElementById('gridBody').innerHTML = "";
     flagCount =0;
     flagCounter.innerHTML = 0;
-    gameMsg.innerHTML = "Game Time!";
+    gameMsg.innerHTML = "Good luck!";
     document.getElementById('bombCount').innerHTML = bombs;
     let gameGrid = makeGrid(gridRow, gridCol);
     divMatrix(lookNearby(populateGrid(gameGrid, bombs)));
@@ -274,7 +274,7 @@ const makeBtn = (index1, index2, gameGridReady) => {
         //Do Nothing!
         return;
       } else if (gameGridReady[index1][index2] === 'bb') {
-        gameMsg.innerHTML = 'Oh no, you died! Game Over!';
+        gameMsg.innerHTML = 'BOOM! You died! Better luck next time.';
         targetCell.style.color = 'transparent';
         targetCell.style.backgroundColor = 'orangered';
         gameOver = true;
@@ -294,19 +294,19 @@ const makeBtn = (index1, index2, gameGridReady) => {
             targetCell.style.color = '#FF3333';
             break;
           case 4:
-            targetCell.style.color = 'blueviolet';
+            targetCell.style.color = '#FFD700';
             break;
           case 5:
-            targetCell.style.color = 'pink';
+            targetCell.style.color = '#FF00FF';
             break;
           case 6:
             targetCell.style.color = 'white';
             break;
           case 7:
-            targetCell.style.color = '#FFD700';
+            targetCell.style.color = 'pink';
             break;
           case 8:
-            targetCell.style.color = 'indigo';
+            targetCell.style.color = 'khaki';
             break;
         }
       }
@@ -358,10 +358,4 @@ descrBtn.addEventListener('click', () => {
 // Other Notes      //
 //////////////////////
 
-// //This will be set to a start game button. Use to test for now.
-// let gameGrid = makeGrid(8, 8);
-// // console.log(gameGrid);
-// // console.log(gameGrid[2].length);
-// let gameGridMined = lookNearby(populateGrid(gameGrid, 8));
-// console.log(gameGridMined);
-// divMatrix(gameGridMined);
+//Functional!

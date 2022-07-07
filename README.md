@@ -20,20 +20,21 @@
 
 ## **_Description_**
 
-#### This project will be a knock-off version of the "classic" game minesweeper. Should be a good challenge. I've killed many a minute with this simple, yet engaging puzzle game, as it used to come standard on windows machines.
-#### A 1-player game, the objective is to clear the grid without revealing any 'mines'; sounds simple enough, but it only takes one "hit" and game over.
-#### More to come...
+#### This project constitutes my version of the "classic" game minesweeper. I've killed many a minute with this simple, yet engaging puzzle game, as it used to come standard on windows machines. It was a fun exersice piecing this game together from scratch using only HTML, JavaScript, & CSS.
 
+#### The object of the game is to clear the board of tiles without activating any hazards. Use the numbers displayed in the tiles you have cleared to determine where the nearby hazards may be, then mark them with a "flag."
+#### Once all the hazards have been properly marked and the rest of the game tiles cleared, you'll have won the game...but if you activate any one of the hazards, you'll lose, and will have to start a new game.
+#### Win or lose, if you wish to play again, simply click on one of the level select buttons and a new minefield will appear.
 ---
 
-## **_Getting started_**
+## **_Future Updates_**
 
-#### Will need to create the necessary html, js, and css files.
+#### Some things to consider if I have time to come back to this after the course.
 
-- [x] Will need to create the necessary html, js, and css files.
-- [x] Will need to plan out the logic of the game, and write it into js.
-- [x] Will need to supply a basic set of elements & style to test the js (html & css).
-- [ ] Will need to style the game for presentation.
+- [ ] May add ability to make custom sized board & number of "mines."
+- [ ] May update icons & other symbols used.
+- [ ] May re-theme into something different.
+- [ ] Optimized for mobile.
 
 ---
 
@@ -46,4 +47,4 @@
 - #### for insight on useful techniques mdn : https://developer.mozilla.org/en-US/
 - #### For some helpful coding ideas, github user kubowania's minesweeper was worth a review: https://github.com/kubowania/minesweeper/blob/master/app.js
 - #### For grid images, game-icons.net (user Lorc).
-- #### imgur.com for large pictures (backgrounds)...user Wadatahmydamie, ...
+- #### imgur.com for background picture (user Wadatahmydamie).
