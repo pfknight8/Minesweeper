@@ -176,8 +176,8 @@ li {
   max-width: 800px;
   text-align: justify;
   padding: 10px;
-  background-color: rgba(184, 168, 152, .7);
-  border: solid 5px rgba(54, 38, 22, .7);
+  background-color: rgba(184, 168, 152, 0.7);
+  border: solid 5px rgba(22, 22, 22, 0.7);
   border-radius: 5px;
 }
 
@@ -189,12 +189,12 @@ li {
 #descrToggle {
   width: 20px;
   background-color: transparent;
-  border: solid 2px rgba(54, 38, 22, .7);
+  border: solid 2px rgba(22, 22, 22, 0.7);
   border-radius: 5px;
-  align-self: center;
+  align-self: flex-start;
 }
 #descrToggle:active, #descrToggle:hover {
-  background-color: rgba(54, 38, 22, .7);
+  background-color: rgba(22, 22, 22, 0.7);
 }
 
 .unl {
