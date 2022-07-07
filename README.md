@@ -9,6 +9,9 @@
 ### **_Link to trello:_**
 [Trello](https://trello.com/invite/b/SmlDjLZn/06fb2aaf3f96c9f70fb4c217412c0d45/ga-project-1)
 
+### **_Surge Link_**
+[Surge deployment](https://pks-minesweeper.surge.sh/)
+
 ### **_Other Links_**
 
 [LinkedIn](https://www.linkedin.com/in/patrick-f-knight/) | [Github](https://www.github.com/pfknight8)
@@ -30,13 +33,13 @@
 - [x] Will need to create the necessary html, js, and css files.
 - [x] Will need to plan out the logic of the game, and write it into js.
 - [x] Will need to supply a basic set of elements & style to test the js (html & css).
-- [ ] Will need to styl the game for presentation.
+- [ ] Will need to style the game for presentation.
 
 ---
 
 ## **_Credits_**
 
-#### Undoubtedly, I will be looking for advice/examples on how to approach this project, and so I will need to provide the proper credits, here.
+#### At times, I will need to look advice/examples on how to approach this project; proper credits will be provided, here.
 
 - #### Patrick Knight (myself, as an example)
 - #### General Assembly (projech assigner, as example)
