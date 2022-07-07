@@ -18,8 +18,6 @@ body, main {
   flex-direction: column;
   align-items: center;
   /* General attributes */
-  /* font-family: 'Kdam Thmor Pro', sans-serif;
-  text-align: center; */
 }
 
 #interface {
@@ -28,10 +26,10 @@ body, main {
   flex-direction: column;
   align-items: center;
   /* General attributes */
-  border-top: solid 6px rgba(40, 40, 40, 1);
-  border-left: solid 6px rgba(40, 40, 40, 1);
-  border-right: solid 6px rgba(0, 0, 0, 1);
-  border-bottom: solid 6px rgba(0, 0, 0, 1);
+  border-top: solid 6px rgba(148, 148, 148, 1);
+  border-left: solid 6px rgba(148, 148, 148, 1);
+  border-right: solid 6px rgba(108, 108, 108, 1);
+  border-bottom: solid 6px rgba(108, 108, 108, 1);
   border-radius: 5px;
   width: 380px;
   max-width: 450px;
@@ -51,7 +49,6 @@ body, main {
 }
 
 .startBtn {
-  /* Placement attributes */
   width: 90px;
   margin: 5px;
   border-color: black;
@@ -61,10 +58,10 @@ body, main {
 
 #flagStatement {
   background-color: rgba(64, 64, 64, 1);
-  border-top: solid 4px rgba(0, 0, 0, 1);
-  border-left: solid 4px rgba(0, 0, 0, 1);
-  border-right: solid 4px rgba(40, 40, 40, 1);
-  border-bottom: solid 4px rgba(40, 40, 40, 1);
+  border-top: solid 4px rgba(108, 108, 108, 1);
+  border-left: solid 4px rgba(108, 108, 108, 1);
+  border-right: solid 4px rgba(148, 148, 148, 1);
+  border-bottom: solid 4px rgba(148, 148, 148, 1);
   border-radius: 5px;
   padding: 10px;
   color: rgba(195, 176, 145, 1);
@@ -78,8 +75,8 @@ body, main {
   /* Placement attributes */
   display: flex;
   flex-direction: column;
-  /* will need to change the template dynamically, with js? */
-  /* Can also do flex of flex (div rows hold array of spans. */
+  /* would like to eventually change the template dynamically...do we need js? */
+  /* General attributes */
   border-top: solid 10px rgba(40, 40, 40, 1);
   border-left: solid 10px rgba(40, 40, 40, 1);
   border-right: solid 10px rgba(0, 0, 0, 1);
@@ -91,7 +88,6 @@ body, main {
 
 #spaceHolder {
   width: 150px;
-  /* height: 40px; */
 }
 
 .gameRows {
@@ -100,12 +96,9 @@ body, main {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  /*For testing*/
-  color: go
 }
 
 .gameCell {
-  /* background-color: rgba(152, 168, 184, 1); */
   margin: 0px;
   width: 25px;
   height: 25px;
@@ -115,7 +108,6 @@ body, main {
 }
 
 .gameBtn {
-  /* display: contents; */
   width: 25px;
   height: 25px;
   background-color: rgba(195, 176, 145, 1);
@@ -134,8 +126,8 @@ body, main {
 }
 
 .cellValue {
-  /* Placement attributes */
   display: none;
+  /* Will be flipped between none/block in js.*/
 }
 
 .bomb {
@@ -157,15 +149,6 @@ body, main {
 /* ============================================== */
 /* Formatting the descriptions section. */
 /* ============================================== */
-
-ul {
-  list-style: disc;
-  padding-left: 0.25in;
-}
-
-li {
-  margin: 5px;
-}
 
 #descriptions {
   width: 85vw;
@@ -193,9 +176,17 @@ li {
   background-color: rgba(22, 22, 22, 0.7);
 }
 
+ul {
+  list-style: disc;
+  padding-left: 0.25in;
+}
+
+li {
+  margin: 5px;
+}
+
 .unl {
   text-decoration: underline;
-  /* color:rgba(64, 130, 109, 1); */
 }
 
 .hidden {
@@ -206,10 +197,6 @@ li {
   width: 90vw;
   max-width: 800px;
   padding: 10px;
-  /* text-align: left; */
-  /* background-color: rgba(184, 168, 152, .7);
-  border: solid 5px rgba(54, 38, 22, .7);
-  border-radius: 5px; */
 }
 
 a:link {

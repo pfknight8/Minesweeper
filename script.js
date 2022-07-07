@@ -342,7 +342,7 @@ medBtn.addEventListener('click', () => {
 
 // Epic/Advanced game
 advBtn.addEventListener('click', () => {
-  startGame(30, 16, 99);
+  startGame(16, 30, 99);
 });
 
 //Operates the hide/show button in the 'descriptions' section
