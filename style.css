@@ -17,7 +17,6 @@ body, main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* General attributes */
 }
 
 #interface {
@@ -75,7 +74,6 @@ body, main {
   /* Placement attributes */
   display: flex;
   flex-direction: column;
-  /* would like to eventually change the template dynamically...do we need js? */
   /* General attributes */
   border-top: solid 10px rgba(40, 40, 40, 1);
   border-left: solid 10px rgba(40, 40, 40, 1);

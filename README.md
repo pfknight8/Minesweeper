@@ -6,13 +6,11 @@
 
 ---
 
-### **_Link to trello:_**
-[Trello](https://trello.com/invite/b/SmlDjLZn/06fb2aaf3f96c9f70fb4c217412c0d45/ga-project-1)
+### **_Project Links_**
 
-### **_Surge Link_**
-[Surge deployment](https://pks-minesweeper.surge.sh/)
+[Trello](https://trello.com/invite/b/SmlDjLZn/06fb2aaf3f96c9f70fb4c217412c0d45/ga-project-1) | [Surge deployment](https://pks-minesweeper.surge.sh/)
 
-### **_Other Links_**
+### **_My Links_**
 
 [LinkedIn](https://www.linkedin.com/in/patrick-f-knight/) | [Github](https://www.github.com/pfknight8)
 
@@ -25,6 +23,7 @@
 #### The object of the game is to clear the board of tiles without activating any hazards. Use the numbers displayed in the tiles you have cleared to determine where the nearby hazards may be, then mark them with a "flag."
 #### Once all the hazards have been properly marked and the rest of the game tiles cleared, you'll have won the game...but if you activate any one of the hazards, you'll lose, and will have to start a new game.
 #### Win or lose, if you wish to play again, simply click on one of the level select buttons and a new minefield will appear.
+
 ---
 
 ## **_Screenshots_**
@@ -49,7 +48,6 @@
 
 - [ ] May add ability to make custom sized board & number of "mines."
 - [ ] May update icons & other symbols used.
-- [ ] May re-theme into something different.
 - [ ] Optimized for mobile.
 
 ---
