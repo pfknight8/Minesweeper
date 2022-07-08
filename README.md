@@ -1,4 +1,4 @@
-<img src="land-mine.svg" alt="mine" width="250"/>
+<img src="land-mine.svg" alt="mine" width="200"/>
 
 # Minesweeper
 
