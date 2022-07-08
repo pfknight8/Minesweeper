@@ -1,4 +1,4 @@
-![mineIcon](land-mine.svg)
+<img src="land-mine.svg" alt="mine" width="250"/>
 
 # Minesweeper
 
@@ -20,10 +20,10 @@
 
 ## **_Description_**
 
-#### This project constitutes my version of the classic game Minesweeper. This is my first project for General Assembly SEI course, constructed over the course of 1 week. It was a fun exersice piecing this game together from scratch using only HTML, JavaScript, & CSS, and was a great way to get more familiar with coding in these languages.
+#### This project constitutes my version of the classic game Minesweeper. This is my first project for the General Assembly SEI course, constructed over the course of 1 week. It was a fun exersice piecing this game together from scratch using only HTML, JavaScript, & CSS, and was a great way to get more familiar with coding in these languages.
 
-#### The object of the game is to clear the board of tiles without activating any hazards. Use the numbers displayed in the tiles you have cleared to determine where the nearby hazards may be, then mark them with a "flag."
-#### Once all the hazards have been properly marked and the rest of the game tiles cleared, you'll have won the game...but if you activate any one of the hazards, you'll lose, and will have to start a new game.
+#### The object of the game is to clear the board of tiles without activating any mines. Use the numbers displayed in the tiles you have cleared to determine where the nearby mines may be, then mark them with a "flag" by holding shift and clicking the tile.
+#### Once all the mines have been properly marked and the rest of the game tiles cleared, you'll have won the game...but if you activate any one of the mines, you'll lose, and will have to start a new game.
 #### Win or lose, if you wish to play again, simply click on one of the level select buttons and a new minefield will appear.
 
 ---
