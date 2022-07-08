@@ -29,9 +29,15 @@
 
 ## **_Screenshots_**
 
+### Main Page:
+
 ![opened](https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/OpeningPage.png)
 
+### A game in progress
+
 ![gameOn](https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/GameProgressing.png)
+
+### The information section is collapsible; shown expanded below, one can notice it hidden in the above photos.
 
 ![infoShown](https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/OpenInfoBox.png)
 
@@ -54,7 +60,7 @@
 
 - #### Patrick Knight (myself, as an example)
 - #### General Assembly (projech assigner, as example)
-- #### for insight on useful techniques mdn : https://developer.mozilla.org/en-US/
 - #### For some helpful coding ideas, github user kubowania's minesweeper was worth a review: https://github.com/kubowania/minesweeper/blob/master/app.js
 - #### For grid images, game-icons.net (user Lorc).
 - #### imgur.com for background picture (user Wadatahmydamie).
+- #### Mine sound effects from Media College.com: https://www.mediacollege.com/downloads/sound-effects/

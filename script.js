@@ -14,6 +14,8 @@ const flagCounter = document.getElementById('flagCount');
 const startBtnHTML = document.querySelectorAll('.startBtn');
 const gameMsg = document.getElementById('resultMsg');
 const descrBtn = document.getElementById('descrToggle');
+const bombAudioOgg = new Audio('bomb03.ogg');
+const bombAudioMp3 = new Audio('bomb03.mp3');
 
 //////////////////////
 // Functions        //
@@ -215,6 +217,8 @@ const makeBtn = (index1, index2, gameGridReady) => {
         targetCell.style.color = 'transparent';
         targetCell.style.backgroundColor = 'orangered';
         gameOver = true;
+        bombAudioOgg.play();
+        bombAudioMp3.play();
       } else if(gameGridReady[index1][index2] == 0) {
         targetCell.style.color = 'transparent';
         //Start 'click' on all nearby tiles.
