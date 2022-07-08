@@ -1,4 +1,6 @@
-# PK-minesweeper-GA_Project1
+![mineIcon](land-mine.svg)
+
+# Minesweeper
 
 ---
 
@@ -18,7 +20,7 @@
 
 ## **_Description_**
 
-#### This project constitutes my version of the classic game Minesweeper. I've killed many a minute with this simple, yet engaging puzzle game, as it used to come standard on windows machines. It was a fun exersice piecing this game together from scratch using only HTML, JavaScript, & CSS3
+#### This project constitutes my version of the classic game Minesweeper. This is my first project for General Assembly SEI course, constructed over the course of 1 week. It was a fun exersice piecing this game together from scratch using only HTML, JavaScript, & CSS, and was a great way to get more familiar with coding in these languages.
 
 #### The object of the game is to clear the board of tiles without activating any hazards. Use the numbers displayed in the tiles you have cleared to determine where the nearby hazards may be, then mark them with a "flag."
 #### Once all the hazards have been properly marked and the rest of the game tiles cleared, you'll have won the game...but if you activate any one of the hazards, you'll lose, and will have to start a new game.
@@ -28,17 +30,17 @@
 
 ## **_Screenshots_**
 
-### Main Page.
+#### Main Page.
 
 ![opened](https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/OpeningPage.png)
 
-### A game in progress.
-
-![gameOn](https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/GameProgressing.png)
-
-### The information section is collapsible; shown expanded below, one can notice it hidden in the above photos.
+#### Expanded information section (collapsed in the prior photo).
 
 ![infoShown](https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/OpenInfoBox.png)
+
+#### A game in progress.
+
+![gameOn](https://github.com/pfknight8/PK-minesweeper-GA_Project1/blob/main/GameProgressing.png)
 
 ---
 
@@ -46,7 +48,10 @@
 
 #### Some things to consider if I have time to come back to this after the course.
 
-- [ ] May add ability to make custom sized board & number of "mines."
+- [x] ~~Include interface to show count of flags vs bombs.~~
+- [x] ~~Provide choice of game level.~~
+- [x] ~~Make Information section collapsibile.~~
+- [ ] Add ability to make custom sized board & number of "mines."
 - [ ] May update icons & other symbols used.
 - [ ] Optimized for mobile.
 
@@ -56,8 +61,7 @@
 
 #### Credit for advice/examples on how to approach this project, as well as the art files I used in the project.
 
-- #### For some helpful coding ideas, github user kubowania's minesweeper was worth a review: https://github.com/kubowania/minesweeper/blob/master/app.js
 - #### For grid images, game-icons.net (user Lorc).
 - #### imgur.com for background picture (user Wadatahmydamie).
 - #### Mine sound effects from Media College.com: https://www.mediacollege.com/downloads/sound-effects/
-- #### For code help, mdn: https://developer.mozilla.org/en-US/ & stackoverflow: https://stackoverflow.com/
+- #### For some helpful coding ideas, github user kubowania's minesweeper was worth a review: https://github.com/kubowania/minesweeper/blob/master/app.js
